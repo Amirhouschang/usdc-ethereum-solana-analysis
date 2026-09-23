@@ -202,4 +202,4 @@ It should also be said plainly where that help had to be corrected, because anyo
 
 ## Author
 
-Amir Houschang — Dune: [@amirhoushang](https://dune.com/amirhoushang)
+Amirhoushang — Dune: [@amirhoushang](https://dune.com/amirhoushang)
