@@ -1,5 +1,7 @@
 # Methodology
 
+[← Back to README](../README.md)
+
 How every figure in this project was produced, which definitions were used, and which queries did what — including the ones that failed.
 
 ---
