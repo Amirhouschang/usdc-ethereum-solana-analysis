@@ -2,6 +2,7 @@
 
 [← Back to README](../README.md)
 
+
 Every figure below comes from a public Dune query listed in [docs/methodology.md](../docs/methodology.md). Period: 1 January to 30 June 2026, native USDC only.
 
 ---
