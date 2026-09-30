@@ -267,7 +267,7 @@ The Solana transaction-level composition appears five times because the full-per
 | Q19b CCTP Check, Ethereum Burn (H1 2026) | 8872032 |
 | Q19c CCTP Check, Solana Transfer Types (H1 2026) | 8872199 |
 
-They do not feed the dashboard. They test how much of the Mint and Burn categories is CCTP, by direct calls to Circle's CCTP contracts and programs, and are the source of the CCTP figures in the report and in limitations point 3.
+The Q19 queries do not feed the dashboard. They test how much of the Mint and Burn categories is CCTP, by direct calls to Circle's CCTP contracts and programs, and are the source of the CCTP figures in the report and in limitations point 3.
 
 The CCTP addresses they use, taken from Circle's CCTP documentation ([contract addresses](https://developers.circle.com/cctp/references/contract-addresses), [Solana programs](https://developers.circle.com/cctp/references/solana-programs), [V1 EVM contracts](https://developers.circle.com/cctp/v1/evm-smart-contracts), [V1 Solana programs](https://developers.circle.com/cctp/v1/solana-programs)):
 
@@ -283,6 +283,8 @@ The CCTP addresses they use, taken from Circle's CCTP documentation ([contract a
 | Solana | TokenMessengerMinter V1 | `CCTPiPYPc6AsJuwueEnWgSgucamXDZwBd53dQ11YiKX3` |
 | Solana | MessageTransmitter V2 | `CCTPV2Sm4AdWt5296sk4P66VBZ7bEhcARwFaaS9YPbeC` |
 | Solana | TokenMessengerMinter V2 | `CCTPV2vPZJS2u2BBsUoscuikbYjnpFmbFsvVuJdgUMQe` |
+
+Why the Bridge / Cross-chain category is empty: Q06-ETH (8803129) labels a burn as CCTP only when it is sent from the TokenMessenger contracts (V1 and V2) to the null address, but the burn is executed by the TokenMinter, so no row matches. Q06-SOL (8803192) has no CCTP rule. Its totals are unaffected: Q06-ETH mint 459,780 transfers and burn 304,906 are the same rows that Q19 splits into CCTP and not CCTP.
 
 ### A note on Q10
 
