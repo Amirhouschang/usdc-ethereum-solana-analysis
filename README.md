@@ -14,7 +14,7 @@ Solana processed 1,159,717,918 USDC transfers against Ethereum's 109,086,263 —
 
 On Ethereum, 91.82% of all transferred value sat in transfers of $1 million and above; on Solana the largest single band was $100,000 to $1 million with 50.38%, and the $1 million band held 34.09%.
 
-DEX swaps accounted for 69.22% of Solana's USDC transactions but only 12.56% of its transferred value, while on Ethereum swaps were 24.83% of transactions and 58.97% of value — the same asset doing two different jobs.
+DEX swaps accounted for 69.22% of Solana's USDC transactions but only 12.56% of its transferred value, while on Ethereum swaps were 24.83% of transactions and 58.98% of value — the same asset doing two different jobs.
 
 Value is far more concentrated on Ethereum: a single address moved 32.96% of all USDC volume and the ten largest moved 67.89%, against 7.01% and 17.35% on Solana.
 
@@ -108,7 +108,7 @@ Solana carried 10.63 times Ethereum's transfer count and 35.47% of its value. Th
 
 ![Share of volume by size bucket](images/03_size_distribution.png)
 
-Transfers below $1,000 are 75.90% of all Ethereum transfers and carry 0.0976% of the volume. On Solana they are 92.47% of transfers and 3.9888% of volume. (These figures exclude the separate bucket for transfers with a zero or missing USD value — 6.81% of Ethereum transfers, 0.53% of Solana transfers.)
+Transfers below $1,000 are 75.90% of all Ethereum transfers and carry 0.0976% of the volume. On Solana they are 92.47% of transfers and 3.9888% of volume. (Shares are of all transfers. The separate bucket for transfers with a zero or missing USD value — 6.81% of Ethereum transfers, 0.53% of Solana transfers — is not counted as "below $1,000".)
 
 The median transfer sits in the $10–$100 band on both chains, but the value does not: on Ethereum 91.82% of all volume is in transfers of $1 million and above, while Solana's largest band is $100,000–$1 million at 50.38%.
 
@@ -116,7 +116,7 @@ The median transfer sits in the $10–$100 band on both chains, but the value do
 
 ![Category composition](images/04_category_composition.png)
 
-Counted by transaction, Solana is a swap chain: 69.22% DEX swaps against Ethereum's 24.83%. Counted by value, it is the opposite: those Solana swaps carry 12.56% of the volume while Ethereum's carry 58.97%.
+Counted by transaction, Solana is a swap chain: 69.22% DEX swaps against Ethereum's 24.83%. Counted by value, it is the opposite: those Solana swaps carry 12.56% of the volume while Ethereum's carry 58.98%.
 
 Counted by address, the picture shifts again — 30.29% of Solana's active addresses touched a DEX swap, against 5.89% on Ethereum.
 
@@ -132,21 +132,21 @@ Solana's **activity** is the more concentrated one: its top 100 addresses accoun
 
 12,433 Ethereum addresses — 0.0974% of all active addresses — account for 91.27% of the volume and 57.39% of all transfer legs. On Solana the automated-like group is larger in relative terms (62,611 addresses, 0.2660%) and produces 88.50% of all transfer legs, but only 45.29% of the volume. Automation dominates *value* on Ethereum and *frequency* on Solana.
 
-### Issuance is stable, redemption tracks it
+### Issuance and redemption are close over the half-year
 
-Across the six months, Ethereum mint volume moved between $15.85bn and $18.15bn (a factor of 1.14 between the lowest and highest month) and burn volume between $13.51bn and $20.92bn (factor 1.55). On Solana, mint ranged $9.78bn–$12.70bn (factor 1.30) and burn $10.12bn–$14.31bn (factor 1.41). Half-year totals: Ethereum $104.95bn minted against $105.78bn burned, Solana $68.00bn against $70.88bn. No month shows a supply shock on either chain.
+Across the six months, Ethereum mint volume moved between $15.85bn and $18.15bn (a factor of 1.14 between the lowest and highest month) and burn volume between $13.51bn and $20.92bn (factor 1.55). On Solana, mint ranged $9.78bn–$12.70bn (factor 1.30) and burn $10.12bn–$14.31bn (factor 1.41). Half-year totals: Ethereum $104.95bn minted against $105.78bn burned, Solana $68.00bn against $70.88bn. Over the half-year, burn exceeds mint by $0.84bn on Ethereum and $2.89bn on Solana.
 
-On the address side, issuer activity is run by almost nobody: 14 Ethereum addresses and 4 Solana addresses appear on the mint or burn side in the entire period.
+On the address side, the counts are asymmetric: 14 Ethereum addresses appear in the Burn category and 4 Solana addresses in the Mint category in the entire period, against 68,607 Ethereum addresses in the Mint category and 149,410 Solana addresses in the Burn category.
 
-### USDC is held only briefly between trades
+### Candidate trading wallets hold USDC only briefly between trades
 
 Among candidate trading wallets, 84.46% of Ethereum parking sequences and 71.72% of Solana ones end in a re-entry. Of those re-entries, 85.65% happen within one hour on Ethereum and 99.38% on Solana. Total parked value: $17.19bn across 3,527,079 Ethereum sequences and $58.50bn across 126,097,891 Solana sequences.
 
 This section describes a candidate population dominated by high-frequency, automated-like trading, not typical users. See [docs/limitations.md](docs/limitations.md).
 
-### The data is clean
+### Data quality checks
 
-Zero duplicate rows and zero rows with a USD value deviating more than 1% from the token amount, on both chains, across all 1,268,804,181 transfer rows.
+Zero duplicate rows on both chains across all 1,268,804,181 transfer rows, and zero rows with a USD value deviating more than 1% from the token amount (this test applies to rows that carry a USD value). Rows with a zero or missing amount or USD value are reported separately, see [report/findings.md](report/findings.md), section 10.
 
 ---
 
@@ -180,7 +180,7 @@ Zero duplicate rows and zero rows with a USD value deviating more than 1% from t
 
 This section is here because the process is part of the work, and because anyone reproducing it should know what they are walking into.
 
-**Four Dune accounts.** The main account is paid, and it was still not enough to finish the project there. Query credits ran out mid-analysis, and the work continued on a second, then a third, then a fourth account. The consequence is visible on the dashboard: the widgets are served by queries published under @amir_1366 while the dashboard itself lives on @amirhoushang. This is not several people — it is one person and four credit budgets.
+**Four Dune accounts.** The main account is paid, and it was still not enough to finish the project there. Query credits ran out mid-analysis, and the work continued on a second, then a third, then a fourth account. The consequence is visible on the dashboard: the widgets are served by queries published under @amir_1366, except the category-comparison widget (Q09), which is served from @amirhoushang, while the dashboard itself lives on @amirhoushang. This is not several people — it is one person and four credit budgets.
 
 **The query history is kept on purpose.** Failed attempts, timed-out variants, single-month test runs and superseded versions were not deleted. They show how the analysis actually developed: which schema assumptions turned out to be wrong, which joins were too expensive, which queries had to be split into stages. A tidy list of ten perfect queries would be a less honest description of this work than the messy list that exists.
 
