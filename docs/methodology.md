@@ -65,7 +65,7 @@ Transfers are bucketed by USD value into nine bands, numbered so that they sort 
 
 `00: <=$0 or NULL`, `01: <$1`, `02: $1-$10`, `03: $10-$100`, `04: $100-$1K`, `05: $1K-$10K`, `06: $10K-$100K`, `07: $100K-$1M`, `08: >=$1M`
 
-Bucket `00` is kept rather than dropped. It holds transfers with a zero or missing USD value — 6.81% of Ethereum transfers and 0.53% of Solana transfers — and discarding them silently would change the denominators of every share in the section. When a share of "transfers below $1,000" is quoted in this project, bucket `00` is excluded and that is stated.
+Bucket `00` is kept rather than dropped. It holds transfers with a zero or missing USD value — 6.81% of Ethereum transfers and 0.53% of Solana transfers — and discarding them silently would change the denominators of every share in the section. When a share of "transfers below $1,000" is quoted in this project, bucket `00` is not counted as below $1,000 but stays in the denominator, and that is stated.
 
 ---
 
@@ -176,6 +176,8 @@ Every query is public. The ones marked as feeding the dashboard are listed in th
 | Q15 Wallet-Level Net USDC Flows Combined | 8819754 |
 | Q17 Parking Duration and Re-entry Rate | 8808809 |
 | Q18 Final KPI Summary Table | 8819655 |
+
+One further dashboard query, Q09 Category Comparison, Percentage Points (8804845), feeds the dashboard but is published under @amirhoushang and is listed below.
 
 ### Source and exploratory queries — @amirhoushang
 
