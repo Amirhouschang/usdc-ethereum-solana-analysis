@@ -19,7 +19,9 @@ Every count of "active addresses" is a count of addresses, never of people. One 
 
 Ethereum's `tx_hash` and Solana's `tx_id` share no common key, and the curated tables carry no cross-chain correlation identifier. Individual CCTP burn/mint pairs therefore cannot be matched across the two chains with the available data. Cases that cannot be attributed cleanly are reported under `Issuer — Unclassified` rather than being assigned to bridging.
 
-No CCTP burn events were detected on Ethereum in this period at all. That is an absence of labelled data, not proof that no bridging occurred.
+The category queries do not separate CCTP, so the `Bridge / Cross-chain` category is 0% on both chains by construction, not by observation. CCTP transfers sit inside `Issuer / Burn / Redemption` and `Issuer — Unclassified (Mint)`.
+
+A separate check (Q19 and Q19b) found CCTP activity on both chains, at least: on Ethereum 257,427 burn transfers ($21.50bn, 20.33% of burn volume) and 205,791 mint transfers ($40.42bn, 38.51% of mint volume); on Solana 178,731 burn transfers ($32.05bn, 45.21% of burn volume), with no CCTP mint among the 466 mint transfers. These are lower bounds: only direct calls to Circle's CCTP contracts and programs are recognised, and calls routed through other contracts or programs are not counted.
 
 ## 4. Category labelling is incomplete and not symmetric between the chains
 
