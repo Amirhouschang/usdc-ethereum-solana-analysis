@@ -13,7 +13,7 @@ Every count of "active addresses" is a count of addresses, never of people. One 
 
 ## 2. Gross volume is throughput, not economic value
 
-"Gross transfer volume" counts every transfer leg, including internal hops inside a protocol and intermediary steps that move the same dollars several times. It measures how much USDC moved across the ledger, not how much economic value changed hands. A single swap routed through three pools produces three transfers.
+"Gross transfer volume" counts every transfer, including internal hops inside a protocol and intermediary steps that move the same dollars several times. It measures how much USDC moved across the ledger, not how much economic value changed hands. A single swap routed through three pools produces three transfers.
 
 ## 3. Cross-chain burn and mint pairs cannot be reconstructed
 
