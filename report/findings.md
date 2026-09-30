@@ -93,7 +93,7 @@ The two chains part company at the top of the distribution. Ethereum concentrate
 | DEX Swap | 58.9775% | 12.5601% | +46.4174 pp |
 | Issuer / Burn / Redemption | 1.1746% | 2.2194% | −1.0448 pp |
 | Issuer — Unclassified (Mint) | 1.1653% | 2.1289% | −0.9636 pp |
-| Bridge / CCTP | 0% | 0% | 0 pp |
+| Bridge / CCTP (not separated, see below) | 0% | 0% | 0 pp |
 | Unidentified | 38.6825% | 83.0916% | −44.4091 pp |
 
 ### By address
@@ -111,7 +111,14 @@ Categories overlap here — one address can appear in several — so the shares 
 
 **Issuer address counts are asymmetric.** 14 Ethereum addresses appear in the Burn category and 4 Solana addresses in the Mint category in the period, against 68,607 Ethereum addresses in the Mint category and 149,410 Solana addresses in the Burn category.
 
-**No CCTP burns were detected on Ethereum.** That is an absence of labelled data, not evidence that no bridging happened.
+**CCTP is present on both chains but is not a separate category.** The Bridge / CCTP row above is 0% because the classification queries do not separate CCTP. Its transfers sit inside Issuer / Burn / Redemption and Issuer — Unclassified (Mint). A separate check (Q19 and Q19b) identifies them by direct calls to Circle's CCTP contracts and programs:
+
+| | Ethereum | Solana |
+| --- | --- | --- |
+| CCTP burn | 257,427 transfers, $21.50bn (84.43% of burn transfers, 20.33% of burn volume) | 178,731 transfers, $32.05bn (37.84% of burn transfers, 45.21% of burn volume) |
+| CCTP mint | 205,791 transfers, $40.42bn (44.76% of mint transfers, 38.51% of mint volume) | none among the 466 mint transfers |
+
+These are lower bounds. Only direct calls are recognised: on Ethereum a burn executed by the CCTP TokenMinter or sent to the TokenMessenger, and a mint in a transaction sent to the MessageTransmitter; on Solana a top-level instruction executed by a CCTP program. Calls routed through other contracts or programs are not counted. Individual burn and mint pairs still cannot be matched across the chains (see [limitations](../docs/limitations.md), point 3).
 
 ---
 
