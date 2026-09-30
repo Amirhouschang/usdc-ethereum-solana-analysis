@@ -269,6 +269,21 @@ The Solana transaction-level composition appears five times because the full-per
 
 They do not feed the dashboard. They test how much of the Mint and Burn categories is CCTP, by direct calls to Circle's CCTP contracts and programs, and are the source of the CCTP figures in the report and in limitations point 3.
 
+The CCTP addresses they use, taken from Circle's CCTP documentation ([contract addresses](https://developers.circle.com/cctp/references/contract-addresses), [Solana programs](https://developers.circle.com/cctp/references/solana-programs), [V1 EVM contracts](https://developers.circle.com/cctp/v1/evm-smart-contracts), [V1 Solana programs](https://developers.circle.com/cctp/v1/solana-programs)):
+
+| Chain | Component | Address |
+| --- | --- | --- |
+| Ethereum | TokenMessenger V1 | `0xbd3fa81b58ba92a82136038b25adec7066af3155` |
+| Ethereum | TokenMessenger V2 | `0x28b5a0e9c621a5badaa536219b3a228c8168cf5d` |
+| Ethereum | MessageTransmitter V1 | `0x0a992d191deec32afe36203ad87d7d289a738f81` |
+| Ethereum | MessageTransmitter V2 | `0x81d40f21f12a8f0e3252bccb954d722d4c464b64` |
+| Ethereum | TokenMinter V1 | `0xc4922d64a24675e16e1586e3e3aa56c06fabe907` |
+| Ethereum | TokenMinter V2 | `0xfd78ee919681417d192449715b2594ab58f5d002` |
+| Solana | MessageTransmitter V1 | `CCTPmbSD7gX1bxKPAmg77w8oFzNFpaQiQUWD43TKaecd` |
+| Solana | TokenMessengerMinter V1 | `CCTPiPYPc6AsJuwueEnWgSgucamXDZwBd53dQ11YiKX3` |
+| Solana | MessageTransmitter V2 | `CCTPV2Sm4AdWt5296sk4P66VBZ7bEhcARwFaaS9YPbeC` |
+| Solana | TokenMessengerMinter V2 | `CCTPV2vPZJS2u2BBsUoscuikbYjnpFmbFsvVuJdgUMQe` |
+
 ### A note on Q10
 
 The two Q10 queries exist twice. The originals (8805007, 8805038) on @amirhoushang are readable but no longer hold a stored result — Dune discards execution results after a period of inactivity. Rather than re-run them on an account without credits, they were forked to @amir_1366 as 8818578 and 8818586 and executed there. The SQL is identical; only the forks carry current results.
