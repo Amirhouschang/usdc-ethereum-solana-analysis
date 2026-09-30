@@ -149,6 +149,7 @@ Every figure used in the README and the report was verified against at least one
 | Q17 re-entry rate recomputed from the bucket counts | 84.4637% Ethereum, 71.7204% Solana — matches the query output |
 | Q02 non-positive rows vs the Q05 `<=$0 or NULL` bucket | identical on Ethereum, differ on Solana by 3,397,010 rows — explained in limitations point 13 |
 | Q19 and Q19b CCTP check, totals per direction vs Q06 | exact: Ethereum mint 459,780 and burn 304,906, Solana mint 466 and burn 472,284 |
+| Q19c Solana CCTP burn rows vs Q19 | exact: 118,849 + 59,882 = 178,731 transfers, $32.05bn |
 
 Two of these checks did not reconcile at first sight. Both were traced: the Q13 gap is the issuer volume, because Solana mint and burn rows carry a NULL owner on one side and therefore contribute one leg instead of two, while Ethereum's null address is an ordinary value. The Q02/Q05 difference is the set of Solana transfers with a positive amount but no USD price. Neither required any figure to be corrected, and both are written up in the limitations rather than removed.
 
@@ -264,6 +265,7 @@ The Solana transaction-level composition appears five times because the full-per
 | --- | --- |
 | Q19 CCTP Check, Mint and Burn (H1 2026) | 8872001 |
 | Q19b CCTP Check, Ethereum Burn (H1 2026) | 8872032 |
+| Q19c CCTP Check, Solana Transfer Types (H1 2026) | 8872199 |
 
 They do not feed the dashboard. They test how much of the Mint and Burn categories is CCTP, by direct calls to Circle's CCTP contracts and programs, and are the source of the CCTP figures in the report and in limitations point 3.
 
