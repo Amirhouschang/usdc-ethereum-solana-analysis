@@ -118,6 +118,8 @@ The median transfer sits in the $10–$100 band on both chains, but the value do
 
 Counted by transaction, Solana is a swap chain: 69.22% DEX swaps against Ethereum's 24.83%. Counted by value, it is the opposite: those Solana swaps carry 12.56% of the volume while Ethereum's carry 58.98%.
 
+The Bridge / Cross-chain bars in the volume chart are 0% because the category queries do not separate CCTP, not because none occurred: CCTP burns and mints sit inside the Issuer categories (at least $21.50bn of burns and $40.42bn of mints on Ethereum, and $32.05bn of burns on Solana; see [report/findings.md](report/findings.md), section 3).
+
 Counted by address, the picture shifts again — 30.29% of Solana's active addresses touched a DEX swap, against 5.89% on Ethereum.
 
 ### Concentration runs in opposite directions
