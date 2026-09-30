@@ -111,7 +111,7 @@ Categories overlap here — one address can appear in several — so the shares 
 
 **Issuer address counts are asymmetric.** 14 Ethereum addresses appear in the Burn category and 4 Solana addresses in the Mint category in the period, against 68,607 Ethereum addresses in the Mint category and 149,410 Solana addresses in the Burn category.
 
-**CCTP is present on both chains but is not a separate category.** The Bridge / CCTP row above is 0% because the classification queries do not separate CCTP. CCTP burns on both chains and CCTP mints on Ethereum sit inside Issuer / Burn / Redemption and Issuer — Unclassified (Mint). A separate check (Q19, Q19b and Q19c) identifies them by direct calls to Circle's CCTP contracts and programs:
+**CCTP is present on both chains but is not a separate category.** The Bridge / CCTP row above is 0% because the classification queries do not separate CCTP: the Ethereum query looked for burns sent from the CCTP TokenMessenger contracts, but Circle's documentation says the TokenMinter executes the burn, so the rule matched nothing; the Solana query has no CCTP rule. CCTP burns on both chains and CCTP mints on Ethereum sit inside Issuer / Burn / Redemption and Issuer — Unclassified (Mint). A separate check (Q19, Q19b and Q19c) identifies them by direct calls to Circle's CCTP contracts and programs:
 
 | | Ethereum | Solana |
 | --- | --- | --- |
