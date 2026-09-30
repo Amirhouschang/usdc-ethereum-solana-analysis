@@ -67,7 +67,7 @@ Monthly figures cannot be summed to the half-year totals — the same address is
 
 **Where the median sits.** Cumulative transfer share reaches 50% inside the `$10–$100` bucket on both chains — Ethereum crosses from 49.38% to 63.49% there, Solana from 42.83% to 66.67%. The typical transfer is small on both chains.
 
-**Where the value sits.** Excluding the zero/NULL bucket, transfers below $1,000 are 75.90% of Ethereum transfers and 0.0976% of Ethereum volume; on Solana, 92.47% of transfers and 3.9888% of volume.
+**Where the value sits.** Transfers below $1,000 are 75.90% of all Ethereum transfers and 0.0976% of Ethereum volume; on Solana, 92.47% of all transfers and 3.9888% of volume. The zero/NULL bucket stays in the denominator and is not counted as below $1,000.
 
 The two chains part company at the top of the distribution. Ethereum concentrates 91.82% of its value in transfers of $1 million and above. Solana's largest band is $100,000–$1 million at 50.38%, with the million-plus band at 34.09%.
 
@@ -90,11 +90,11 @@ The two chains part company at the top of the distribution. Ethereum concentrate
 
 | Category | Ethereum | Solana | ETH minus SOL |
 | --- | --- | --- | --- |
-| DEX Swap | 58.974% | 12.561% | +46.413 pp |
-| Issuer / Burn / Redemption | 1.175% | 2.219% | −1.045 pp |
-| Issuer — Unclassified (Mint) | 1.165% | 2.129% | −0.964 pp |
-| Bridge / CCTP | 0.000% | — | — |
-| Unidentified | 38.686% | 83.090% | −44.404 pp |
+| DEX Swap | 58.9775% | 12.5601% | +46.4174 pp |
+| Issuer / Burn / Redemption | 1.1746% | 2.2194% | −1.0448 pp |
+| Issuer — Unclassified (Mint) | 1.1653% | 2.1289% | −0.9636 pp |
+| Bridge / CCTP | 0% | 0% | 0 pp |
+| Unidentified | 38.6825% | 83.0916% | −44.4091 pp |
 
 ### By address
 
@@ -109,7 +109,7 @@ Categories overlap here — one address can appear in several — so the shares 
 
 **The inversion.** Solana's USDC is predominantly a swap instrument by transaction count (69.22%) but those swaps carry only 12.56% of its value. Ethereum's swaps are a quarter of transactions and nearly 60% of value. The same asset does two different jobs on the two chains.
 
-**A handful of issuer addresses.** 14 addresses on Ethereum and 4 on Solana account for all mint and burn activity in the period.
+**Issuer address counts are asymmetric.** 14 Ethereum addresses appear in the Burn category and 4 Solana addresses in the Mint category in the period, against 68,607 Ethereum addresses in the Mint category and 149,410 Solana addresses in the Burn category.
 
 **No CCTP burns were detected on Ethereum.** That is an absence of labelled data, not evidence that no bridging happened.
 
@@ -147,7 +147,7 @@ Categories overlap here — one address can appear in several — so the shares 
 | 9 | goonfi | 50,028,411 | $15,946,962,221 |
 | 10 | raydium | 59,071,633 | $15,487,355,383 |
 
-Ethereum's DEX activity is dominated by one protocol: Uniswap alone holds 53.46% of the top-10 volume. Solana's is not — the largest protocol holds 21.45%, and the top ten are within a factor of four of each other.
+Among the top ten protocols, Ethereum's DEX volume is dominated by one: Uniswap alone holds 53.46% of the top-10 volume. Solana's is not — the largest protocol holds 21.45%, and the top ten are within a factor of about four of each other (4.05 between the first and the tenth).
 
 The trade sizes differ by an order of magnitude. Across the top ten, the average USDC trade is $12,803 on Ethereum and $580 on Solana.
 
@@ -162,7 +162,7 @@ Protocol names are not comparable across chains; the two lists describe entirely
 | Mint monthly range | $15.85bn – $18.15bn (factor 1.14) | $9.78bn – $12.70bn (factor 1.30) |
 | Burn monthly range | $13.51bn – $20.92bn (factor 1.55) | $10.12bn – $14.31bn (factor 1.41) |
 
-Burn slightly exceeds mint on both chains over the half-year. No month shows a supply shock.
+Burn slightly exceeds mint on both chains over the half-year: by $0.84bn on Ethereum and $2.89bn on Solana.
 
 The transfer counts behind those volumes differ sharply in character. Ethereum mint is many small operations (459,780 transfers for $104.9bn); Solana mint is a few very large ones (466 transfers for $68.0bn).
 
@@ -212,13 +212,17 @@ Automation dominates **value** on Ethereum and **frequency** on Solana.
 
 Removing the group entirely leaves $1.57tn of Ethereum volume and $3.42tn of Solana volume — an inversion of the headline ranking, and the single strongest argument for not reading gross volume as economic activity.
 
-Note on the volume base: Q13 counts sent and received legs, so its total should be about twice the gross transfer volume. On Ethereum it matches to $2.15. On Solana it is $138.88bn lower — exactly the Solana mint plus burn volume, because issuer transfers carry a NULL owner on one side and contribute one leg instead of two. See [limitations](limitations.md), point 12.
+Note on the volume base: Q13 counts sent and received legs, so its total should be about twice the gross transfer volume. On Ethereum it matches to $2.15. On Solana it is $138.88bn lower — exactly the Solana mint plus burn volume, because issuer transfers carry a NULL owner on one side and contribute one leg instead of two. See [limitations](../docs/limitations.md), point 12.
 
 ---
 
 ## 7. Unidentified counterparties
 
 The largest receiving addresses inside the Unidentified category.
+
+Definition for Ethereum (Q14-ETH): every USDC transfer whose transaction does not appear in `dex.trades`. Unlike the mutually exclusive categories in section 3, this does not exclude issuer transfers, so mints and burns are included; this is why the null address appears below. Transfers sent from two fixed system addresses (`0xbd3fa81b58ba92a82136038b25adec7066af3155` and `0x28b5a0e9c621a5badaa536219b3a228c8168cf5d`) are left out. The transfer counts are transfer rows, not distinct transactions.
+
+Definition for Solana (Q14-SOL): every USDC transfer outside DEX transactions with a non-NULL owner on both sides. Mints and burns have a NULL owner on one side, so they are excluded here, unlike on Ethereum; the two lists are therefore not built on the same definition. Only the 2,000 largest receiving owners by total received volume were considered. This does not affect the top ten: an owner outside them received at most $1.6bn in total, against $22.55bn at rank 10.
 
 ### Ethereum
 
@@ -310,7 +314,7 @@ Re-entry rate: **84.46%**
 
 Re-entry rate: **71.72%**
 
-**Reading these numbers.** On both chains, when USDC is parked it is parked briefly: 85.65% of Ethereum re-entries and 99.38% of Solana re-entries happen within an hour. Solana's distribution is close to binary — either under an hour, or never.
+**Reading these numbers.** On both chains, in the candidate wallets, re-entries are fast: 85.65% of Ethereum re-entries and 99.38% of Solana re-entries happen within an hour. Solana's distribution is close to binary — either under an hour, or never.
 
 The `>7 days / no reentry` bucket deliberately mixes long holds with sequences that had no disposal before 30 June. The two cannot be separated.
 
@@ -328,7 +332,7 @@ The `>7 days / no reentry` bucket deliberately mixes long holds with sequences t
 | Rows with amount ≤ 0 | 7,433,376 (6.8142%) | 2,765,097 (0.2384%) |
 | Rows with >1% USD deviation | 0 | 0 |
 
-No duplicates and no USD/token mismatches across 1,268,804,181 rows.
+No duplicates across 1,268,804,181 rows and no USD/token mismatches among rows that carry a USD value.
 
 Rows with a zero or missing amount are reported separately rather than dropped. They are counted in the transfer totals and contribute nothing to volume.
 
@@ -340,8 +344,8 @@ One discrepancy worth noting: the Solana count of non-positive rows (2,765,097) 
 
 Ethereum and Solana both carry large USDC activity, and almost nothing else about them is alike.
 
-Ethereum is a settlement layer: fewer, much larger transfers, value concentrated in a handful of addresses, and a labelled DEX segment carrying most of the value through one dominant protocol. A group of 12,433 addresses moves nine tenths of it.
+Ethereum is a settlement layer: fewer, much larger transfers, value concentrated in a handful of addresses, and a labelled DEX segment carrying most of the value. Among the top ten DEX protocols by USDC volume, one, Uniswap, holds 53.46%. A group of 12,433 addresses moves nine tenths of it.
 
-Solana is a trading layer: ten times the transfer count at a third of the value, a median transfer in the tens of dollars, a flat protocol landscape, and automation that shows up as frequency rather than as value. When USDC rests between trades there, it rests for under an hour in 99% of cases.
+Solana is a trading layer: ten times the transfer count at a third of the value, a median transfer in the tens of dollars, a flat protocol landscape, and automation that shows up as frequency rather than as value. When USDC rests between trades there, the candidate trading wallets re-enter within an hour in 99.38% of the sequences that re-enter at all (71.28% of all sequences).
 
 The most honest finding in the dataset is also the least satisfying one: on Solana, 83.09% of the value and on Ethereum 73.91% of the transactions fall into a category that simply has no label. Whatever those addresses are doing, this data cannot say.
