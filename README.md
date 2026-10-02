@@ -202,6 +202,6 @@ It should also be said plainly where that help had to be corrected, because anyo
 
 ---
 
-## Author
+## Rights
 
-Amirhoushang — Dune: [@amirhoushang](https://dune.com/amirhoushang)
+© 2026 Amirhoushang Rahmannejad. All rights reserved. You are welcome to read and review this project. Copying, modifying or redistributing it requires my written permission.
